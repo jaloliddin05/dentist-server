@@ -1,2 +1,2 @@
-export { default as CreateTagDto } from './create-tag.dto';
-export { default as UpdateTagDto } from './update-tag.dto';
+export { default as CreateContactDto } from './create-contact.dto';
+export { default as UpdateContactDto } from './update-contact.dto';

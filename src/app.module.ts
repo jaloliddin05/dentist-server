@@ -8,6 +8,7 @@ import configuration from './config';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { SocialModule } from './modules/social/social.module';
+import { ContactModule } from './modules/contact/contact.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { SocialModule } from './modules/social/social.module';
       rootPath: join(__dirname, '..', 'uploads'),
     }),
     AuthModule,
+    ContactModule,
     SocialModule,
     UserModule,
   ],
