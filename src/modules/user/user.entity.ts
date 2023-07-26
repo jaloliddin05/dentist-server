@@ -12,6 +12,7 @@ import * as bcrypt from 'bcrypt';
 
 import { UserRole } from '../../infra/shared/types';
 import { FileEntity } from '../file/file.entity';
+import { Service } from '../service/service.entity';
 
 @Entity({ name: 'users' })
 export class User extends BaseEntity {
@@ -50,6 +51,12 @@ export class User extends BaseEntity {
   })
   @JoinColumn()
   avatar: FileEntity;
+
+  @ManyToMany(() => Service, (service) => service.users, {
+    cascade: true,
+    onDelete: 'CASCADE',
+  })
+  services: Service[];
 
   public async hashPassword(password: string): Promise<void> {
     this.password = await bcrypt.hash(password, 10);
