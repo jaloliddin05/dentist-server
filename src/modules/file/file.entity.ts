@@ -7,6 +7,7 @@ import {
 } from 'typeorm';
 
 import { User } from '../user/user.entity';
+import { Social } from '../social/social.entity';
 
 @Entity({ name: 'file' })
 export class FileEntity extends BaseEntity {
@@ -23,4 +24,9 @@ export class FileEntity extends BaseEntity {
     onDelete: 'CASCADE',
   })
   user: User;
+
+  @OneToOne(() => Social, (social) => social.avatar, {
+    onDelete: 'CASCADE',
+  })
+  social: Social;
 }

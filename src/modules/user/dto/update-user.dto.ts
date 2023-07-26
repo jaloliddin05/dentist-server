@@ -1,38 +1,62 @@
-import {
-  IsString,
-  MaxLength,
-  IsEmail,
-  IsOptional,
-  IsNumber,
-} from 'class-validator';
+import { IsString, MaxLength, IsOptional } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 class UpdateUserDto {
   @ApiProperty({
+    description: `Password`,
+    example: 'password',
+  })
+  @IsOptional()
+  @IsString()
+  @MaxLength(64)
+  password: string;
+
+  @ApiProperty({
     description: `Name`,
-    example: 'John Doe',
+    example: 'John Doe Ha',
   })
   @IsOptional()
   @IsString()
   readonly name: string;
 
   @ApiProperty({
-    description: `Email`,
-    example: 'johndoe@gmail.com',
+    description: `position`,
+    example: 'dentist',
   })
   @IsOptional()
-  @IsEmail()
-  @MaxLength(125)
-  readonly email: string;
+  @IsString()
+  readonly position: string;
 
   @ApiProperty({
-    description: `User image`,
+    description: `description`,
+    example: `i'm ...`,
+  })
+  @IsOptional()
+  @IsString()
+  description: string;
+
+  @ApiProperty({
+    description: `address`,
+    example: 'Usa, Washington,',
+  })
+  @IsOptional()
+  @IsString()
+  address: string;
+
+  @ApiProperty({
+    description: `login`,
+    example: 'asd',
+  })
+  @IsOptional()
+  @IsString()
+  login: string;
+
+  @ApiProperty({
+    description: `Article image`,
     example: 'file',
     type: 'string',
     format: 'binary',
-    required: false,
   })
-  @IsOptional()
   avatar;
 }
 

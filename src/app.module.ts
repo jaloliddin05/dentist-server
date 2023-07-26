@@ -7,6 +7,7 @@ import { join } from 'path';
 import configuration from './config';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { SocialModule } from './modules/social/social.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { AuthModule } from './modules/auth/auth.module';
       rootPath: join(__dirname, '..', 'uploads'),
     }),
     AuthModule,
+    SocialModule,
     UserModule,
   ],
 })
