@@ -10,6 +10,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { SocialModule } from './modules/social/social.module';
 import { ContactModule } from './modules/contact/contact.module';
 import { ServiceModule } from './modules/service/service.module';
+import { PatientModule } from './modules/patient/patient.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { ServiceModule } from './modules/service/service.module';
     }),
     AuthModule,
     ContactModule,
+    PatientModule,
     ServiceModule,
     SocialModule,
     UserModule,
