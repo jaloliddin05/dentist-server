@@ -10,21 +10,12 @@ import {
 } from 'typeorm';
 import { User } from '../user/user.entity';
 import { Service } from '../service/service.entity';
-import { GenderEnum } from '../../infra/shared/enum';
+import { Patient } from '../patient/patient.entity';
 
 @Entity({ name: 'visit' })
 export class Visit extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
-
-  @Column()
-  name: string;
-
-  @Column()
-  birthday: string;
-
-  @Column()
-  phone: string;
 
   @Column()
   date: string;
@@ -35,11 +26,11 @@ export class Visit extends BaseEntity {
   @Column()
   endTime: string;
 
-  @Column()
-  gender: GenderEnum;
-
-  @Column()
-  address: string;
+  @ManyToOne(() => Patient, (patient) => patient.visits, {
+    onDelete: 'CASCADE',
+  })
+  @JoinColumn()
+  patient: Patient;
 
   @ManyToMany(() => Service, (service) => service.visits, {
     onDelete: 'CASCADE',

@@ -16,7 +16,7 @@ class UpdatePatientDto {
   })
   @IsOptional()
   @IsString()
-  birthday: string;
+  readonly birthday: string;
 
   @ApiProperty({
     description: `phone`,
@@ -24,7 +24,7 @@ class UpdatePatientDto {
   })
   @IsOptional()
   @IsString()
-  phone: string;
+  readonly phone: string;
 
   @ApiProperty({
     description: `position`,
@@ -32,7 +32,7 @@ class UpdatePatientDto {
   })
   @IsOptional()
   @IsString()
-  position: string;
+  readonly position: string;
 
   @ApiProperty({
     description: `gender`,
@@ -40,7 +40,7 @@ class UpdatePatientDto {
   })
   @IsOptional()
   @IsString()
-  gender: GenderEnum;
+  readonly gender: GenderEnum;
 
   @ApiProperty({
     description: `address`,
@@ -48,6 +48,6 @@ class UpdatePatientDto {
   })
   @IsOptional()
   @IsString()
-  address: string;
+  readonly address: string;
 }
 export default UpdatePatientDto;

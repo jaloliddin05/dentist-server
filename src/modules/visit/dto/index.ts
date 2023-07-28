@@ -1,2 +1,2 @@
-export { default as CreateServiceDto } from './create-visit.dto';
-export { default as UpdateServiceDto } from './update-visit.dto';
+export { default as CreateVisitDto } from './create-visit.dto';
+export { default as UpdateVisitDto } from './update-visit.dto';

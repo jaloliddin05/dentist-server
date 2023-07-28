@@ -11,6 +11,7 @@ import { SocialModule } from './modules/social/social.module';
 import { ContactModule } from './modules/contact/contact.module';
 import { ServiceModule } from './modules/service/service.module';
 import { PatientModule } from './modules/patient/patient.module';
+import { VisitModule } from './modules/visit/visit.module';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { PatientModule } from './modules/patient/patient.module';
     ServiceModule,
     SocialModule,
     UserModule,
+    VisitModule,
   ],
 })
 export class AppModule {}

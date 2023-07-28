@@ -1,38 +1,13 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { GenderEnum } from '../../../infra/shared/enum';
-class CreateServiceDto {
-  @ApiProperty({
-    description: `name`,
-    example: 'John Doe Mark',
-  })
-  @IsNotEmpty()
-  @IsString()
-  readonly name: string;
-
-  @ApiProperty({
-    description: `birthday`,
-    example: '10-05-2000',
-  })
-  @IsNotEmpty()
-  @IsString()
-  birthday: string;
-
-  @ApiProperty({
-    description: `phone`,
-    example: '+998998887766',
-  })
-  @IsNotEmpty()
-  @IsString()
-  phone: string;
-
+class CreateVisitDto {
   @ApiProperty({
     description: `date`,
     example: '2022-10-15',
   })
   @IsNotEmpty()
   @IsString()
-  date: string;
+  readonly date: string;
 
   @ApiProperty({
     description: `start time`,
@@ -40,7 +15,7 @@ class CreateServiceDto {
   })
   @IsNotEmpty()
   @IsString()
-  startTime: string;
+  readonly startTime: string;
 
   @ApiProperty({
     description: `end time`,
@@ -48,23 +23,7 @@ class CreateServiceDto {
   })
   @IsNotEmpty()
   @IsString()
-  endTime: string;
-
-  @ApiProperty({
-    description: `gender`,
-    example: GenderEnum.MALE,
-  })
-  @IsNotEmpty()
-  @IsString()
-  gender: GenderEnum;
-
-  @ApiProperty({
-    description: `address`,
-    example: 'tashkent, uol street',
-  })
-  @IsNotEmpty()
-  @IsString()
-  address: string;
+  readonly endTime: string;
 
   @ApiProperty({
     description: `services ids`,
@@ -72,7 +31,7 @@ class CreateServiceDto {
   })
   @IsNotEmpty()
   @IsString()
-  services: string[];
+  readonly services: string[];
 
   @ApiProperty({
     description: `doctor`,
@@ -80,7 +39,15 @@ class CreateServiceDto {
   })
   @IsNotEmpty()
   @IsString()
-  doctor: string;
+  readonly doctor: string;
+
+  @ApiProperty({
+    description: `patient`,
+    example: 'uuid',
+  })
+  @IsNotEmpty()
+  @IsString()
+  readonly patient: string;
 }
 
-export default CreateServiceDto;
+export default CreateVisitDto;

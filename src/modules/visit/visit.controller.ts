@@ -17,68 +17,68 @@ import {
   ApiOperation,
 } from '@nestjs/swagger';
 
-import { CreateServiceDto, UpdateServiceDto } from './dto';
-import { Service } from './visit.entity';
-import { ServiceService } from './visit.service';
+import { CreateVisitDto, UpdateVisitDto } from './dto';
+import { Visit } from './visit.entity';
+import { VisitService } from './visit.service';
 import { Public } from '../auth/decorators/public.decorator';
 
-@ApiTags('Service')
-@Controller('service')
-export class ServiceController {
-  constructor(private readonly serviceService: ServiceService) {}
+@ApiTags('Visit')
+@Controller('visit')
+export class VisitController {
+  constructor(private readonly visitService: VisitService) {}
 
   @Public()
   @Get('/')
-  @ApiOperation({ summary: 'Method: returns all services' })
+  @ApiOperation({ summary: 'Method: returns all visits' })
   @ApiOkResponse({
-    description: 'The services were returned successfully',
+    description: 'The visits were returned successfully',
   })
   @HttpCode(HttpStatus.OK)
   async getData() {
-    return await this.serviceService.getAll();
+    return await this.visitService.getAll();
   }
 
   @Public()
   @Get('/:id')
-  @ApiOperation({ summary: 'Method: returns single service by id' })
+  @ApiOperation({ summary: 'Method: returns single visit by id' })
   @ApiOkResponse({
-    description: 'The service was returned successfully',
+    description: 'The visit was returned successfully',
   })
   @HttpCode(HttpStatus.OK)
-  async getMe(@Param('id') id: string): Promise<Service> {
-    return this.serviceService.getOne(id);
+  async getMe(@Param('id') id: string): Promise<Visit> {
+    return this.visitService.getOne(id);
   }
 
   @Post('/')
-  @ApiOperation({ summary: 'Method: creates new service' })
+  @ApiOperation({ summary: 'Method: creates new visit' })
   @ApiCreatedResponse({
-    description: 'The service was created successfully',
+    description: 'The visit was created successfully',
   })
   @HttpCode(HttpStatus.CREATED)
-  async saveData(@Body() positionData: CreateServiceDto): Promise<Service> {
-    return await this.serviceService.create(positionData);
+  async saveData(@Body() positionData: CreateVisitDto): Promise<Visit> {
+    return await this.visitService.create(positionData);
   }
 
   @Patch('/:id')
-  @ApiOperation({ summary: 'Method: updating service' })
+  @ApiOperation({ summary: 'Method: updating visit' })
   @ApiOkResponse({
-    description: 'Service was changed',
+    description: 'Visit was changed',
   })
   @HttpCode(HttpStatus.OK)
   async changeData(
-    @Body() positionData: UpdateServiceDto,
+    @Body() positionData: UpdateVisitDto,
     @Param('id') id: string,
   ): Promise<UpdateResult> {
-    return await this.serviceService.change(positionData, id);
+    return await this.visitService.change(positionData, id);
   }
 
   @Delete('/:id')
-  @ApiOperation({ summary: 'Method: deleting service' })
+  @ApiOperation({ summary: 'Method: deleting visit' })
   @ApiOkResponse({
-    description: 'Service was deleted',
+    description: 'Visit was deleted',
   })
   @HttpCode(HttpStatus.NO_CONTENT)
   async deleteData(@Param('id') id: string) {
-    return await this.serviceService.deleteOne(id);
+    return await this.visitService.deleteOne(id);
   }
 }

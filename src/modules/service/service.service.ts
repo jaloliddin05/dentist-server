@@ -31,6 +31,15 @@ export class ServiceService {
     return data;
   }
 
+  async getMoreByIds(ids: string[]) {
+    const data = await this.serviceRepository
+      .createQueryBuilder()
+      .where('id IN(:...ids)', { ids })
+      .getMany();
+
+    return data;
+  }
+
   async deleteOne(id: string) {
     const response = await this.serviceRepository.delete(id);
     return response;

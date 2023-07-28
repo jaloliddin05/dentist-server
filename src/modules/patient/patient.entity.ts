@@ -1,5 +1,12 @@
-import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  BaseEntity,
+  OneToMany,
+} from 'typeorm';
 import { GenderEnum } from '../../infra/shared/enum';
+import { Visit } from '../visit/visit.entity';
 
 @Entity({ name: 'patient' })
 export class Patient extends BaseEntity {
@@ -23,4 +30,7 @@ export class Patient extends BaseEntity {
 
   @Column()
   position: string;
+
+  @OneToMany(() => Visit, (visit) => visit.patient)
+  visits: Visit[];
 }
