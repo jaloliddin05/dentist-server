@@ -17,8 +17,8 @@ export class Visit extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
-  date: string;
+  @Column({ type: 'timestamp', nullable: true })
+  date: Date | string;
 
   @Column()
   startTime: string;

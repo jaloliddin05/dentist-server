@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsArray, IsNotEmpty, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 class CreateVisitDto {
   @ApiProperty({
@@ -30,7 +30,7 @@ class CreateVisitDto {
     example: ['uuid', 'uuid', 'uuid'],
   })
   @IsNotEmpty()
-  @IsString()
+  @IsArray()
   readonly services: string[];
 
   @ApiProperty({

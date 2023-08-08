@@ -36,8 +36,8 @@ async function bootstrap() {
   );
 
   const config = new DocumentBuilder()
-    .setTitle('Itransition')
-    .setDescription('Course project api')
+    .setTitle('Dentist')
+    .setDescription('Dentist server api')
     .setVersion('0.2')
     .addBearerAuth()
     .addCookieAuth()

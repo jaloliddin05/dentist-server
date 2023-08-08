@@ -1,5 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { Repository } from 'typeorm';
+import { LessThan, Repository } from 'typeorm';
 
 import { UpdateVisitDto, CreateVisitDto } from './dto';
 import { Visit } from './visit.entity';
@@ -20,6 +20,48 @@ export class VisitService {
 
   async getAll() {
     return await this.visitRepository.find();
+  }
+
+  async getByDate(date: string) {
+    const data = await this.visitRepository.find({
+      where: {
+        date,
+      },
+      relations: {
+        patient: true,
+        services: true,
+      },
+    });
+
+    return data;
+  }
+
+  async getByArchive(date: string) {
+    const data = await this.visitRepository.find({
+      where: {
+        date: LessThan(new Date(date)),
+      },
+      relations: {
+        patient: true,
+        // services: true,
+      },
+    });
+
+    return data;
+  }
+
+  async getPatientVisits(id: string) {
+    const data = await this.visitRepository.find({
+      where: {
+        patient: { id },
+      },
+      relations: {
+        patient: true,
+        services: true,
+      },
+    });
+
+    return data;
   }
 
   async getOne(id: string) {

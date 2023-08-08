@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { GenderEnum } from '../../../infra/shared/enum';
 class CreatePatientDto {
@@ -39,7 +39,7 @@ class CreatePatientDto {
     example: GenderEnum.MALE,
   })
   @IsNotEmpty()
-  @IsString()
+  @IsNumber()
   readonly gender: GenderEnum;
 
   @ApiProperty({

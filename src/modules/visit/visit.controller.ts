@@ -8,6 +8,7 @@ import {
   Patch,
   Param,
   Get,
+  Query,
 } from '@nestjs/common';
 import { UpdateResult } from 'typeorm';
 import {
@@ -20,14 +21,12 @@ import {
 import { CreateVisitDto, UpdateVisitDto } from './dto';
 import { Visit } from './visit.entity';
 import { VisitService } from './visit.service';
-import { Public } from '../auth/decorators/public.decorator';
 
 @ApiTags('Visit')
 @Controller('visit')
 export class VisitController {
   constructor(private readonly visitService: VisitService) {}
 
-  @Public()
   @Get('/')
   @ApiOperation({ summary: 'Method: returns all visits' })
   @ApiOkResponse({
@@ -38,7 +37,36 @@ export class VisitController {
     return await this.visitService.getAll();
   }
 
-  @Public()
+  @Get('/by-date')
+  @ApiOperation({ summary: 'Method: returns all visits by date' })
+  @ApiOkResponse({
+    description: 'The visits were returned successfully',
+  })
+  @HttpCode(HttpStatus.OK)
+  async getDataByDate(@Query('date') date: string) {
+    return await this.visitService.getByDate(date);
+  }
+
+  @Get('/by-archive')
+  @ApiOperation({ summary: 'Method: returns all visits by archive' })
+  @ApiOkResponse({
+    description: 'The visits were returned successfully',
+  })
+  @HttpCode(HttpStatus.OK)
+  async getDataByArchive(@Query('date') date: string) {
+    return await this.visitService.getByArchive(date);
+  }
+
+  @Get('/by-patient/:patientId')
+  @ApiOperation({ summary: 'Method: returns all visits by patient' })
+  @ApiOkResponse({
+    description: 'The visits were returned successfully',
+  })
+  @HttpCode(HttpStatus.OK)
+  async getVisitsByPatient(@Param('patientId') patientId: string) {
+    return await this.visitService.getPatientVisits(patientId);
+  }
+
   @Get('/:id')
   @ApiOperation({ summary: 'Method: returns single visit by id' })
   @ApiOkResponse({

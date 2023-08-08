@@ -21,7 +21,7 @@ export class Social extends BaseEntity {
   })
   title: string;
 
-  @OneToOne(() => FileEntity, (file) => file, {
+  @OneToOne(() => FileEntity, (file) => file.social, {
     onDelete: 'SET NULL',
   })
   @JoinColumn()

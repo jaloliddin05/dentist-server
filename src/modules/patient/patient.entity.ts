@@ -16,13 +16,13 @@ export class Patient extends BaseEntity {
   @Column()
   name: string;
 
-  @Column()
+  @Column({ type: 'timestamp' })
   birthday: string;
 
-  @Column()
+  @Column({ type: 'varchar', unique: true })
   phone: string;
 
-  @Column()
+  @Column({ type: 'int' })
   gender: GenderEnum;
 
   @Column()
