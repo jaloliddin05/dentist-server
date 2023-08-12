@@ -12,6 +12,7 @@ import { ContactModule } from './modules/contact/contact.module';
 import { ServiceModule } from './modules/service/service.module';
 import { PatientModule } from './modules/patient/patient.module';
 import { VisitModule } from './modules/visit/visit.module';
+import { ClientRequestModule } from './modules/client-request/client-request.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { VisitModule } from './modules/visit/visit.module';
       rootPath: join(__dirname, '..', 'uploads'),
     }),
     AuthModule,
+    ClientRequestModule,
     ContactModule,
     PatientModule,
     ServiceModule,

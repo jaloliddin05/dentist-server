@@ -2,14 +2,14 @@ import { IsString, MaxLength, IsOptional } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 class UpdateUserDto {
-  @ApiProperty({
-    description: `Password`,
-    example: 'password',
-  })
-  @IsOptional()
-  @IsString()
-  @MaxLength(64)
-  password: string;
+  // @ApiProperty({
+  //   description: `Password`,
+  //   example: 'password',
+  // })
+  // @IsOptional()
+  // @IsString()
+  // @MaxLength(64)
+  // password: string;
 
   @ApiProperty({
     description: `Name`,
@@ -52,7 +52,7 @@ class UpdateUserDto {
   login: string;
 
   @ApiProperty({
-    description: `Article image`,
+    description: `User image`,
     example: 'file',
     type: 'string',
     format: 'binary',
